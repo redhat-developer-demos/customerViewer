@@ -1,0 +1,49 @@
+﻿@page "/fetchdata"
+
+<PageTitle>Customers</PageTitle>
+
+@using System.Globalization;
+@using customerViewer.Data
+@inject CustomerService CustomerService
+
+<h1>Customers</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (customers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>YTD Sales (U.S. Dollars)</th>
+                <th>Region</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Customer c in customers)
+            {
+                <tr>
+                    <td>@c.Id</td>
+                    <td>@c.customerName</td>
+                    <td>@c.ytdSales</td>
+                    <td>@c.Region</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Customer>? customers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        customers = await CustomerService.GetCustomersAsync();
+    }
+}
