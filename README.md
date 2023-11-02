@@ -1,7 +1,7 @@
 # customerViewer
 Blazor frontend for customer viewing activity
 
-## Part of the Red Hat Developer learning path entitled "Using Red Hat OpenShift labels"##
+## Part of the Red Hat Developer learning path entitled "Using Red Hat OpenShift labels"
 
 `oc new-app https://github.com/donschenck/customerviewer --labels=app.kubernetes.io/part-of=customers,systemname=customers,tier=frontend,language=blazor,customers=frontend --image-stream="openshift/dotnet:6.0-ubi8"`
 
